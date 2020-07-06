@@ -1,7 +1,3 @@
-import {$} from './lib/core'
+import './lib/lib';
 
-//
-// const list = $('.list-order').html()
-// console.log(list);
-
-$('.list-order').html('<h2>Hello</h2>')
+$('.active').toggle().show().length()

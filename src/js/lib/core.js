@@ -1,19 +1,37 @@
-class Dom {
-		constructor(selector) {
-			this.$el = typeof (selector) === 'string' ?
-					document.querySelector(selector) :
-					selector;
+// (() => {
+// 		function $(selector) {
+// 				const el = document.querySelector(selector)
+// 				const obj = {}
+//
+// 				obj.hide = ()=> {
+// 						el.style.display = 'none'
+// 						console.log(this)
+// 						return obj
+// 				}
+// 				obj.show = function(){
+// 						el.style.display = "block"
+// 						return obj
+// 				}
+// 				return obj;
+// 		}
+// 		window.$ = $;
+// })()
+
+
+const $ = function(selector) {
+	return new $.prototype.init(selector);
+}
+$.prototype.init = function(selector) {
+		if (!selector) {
+				return this; // {}
 		}
-		html(html){
-				if (typeof (html)=== 'string'){
-						this.$el.innerHTML = html;
-						console.log(this)
-						return
-				}
-				this.$el.outerHTML.trim();
-		}
+		Object.assign(this, document.querySelectorAll(selector));
+		this.length = document.querySelectorAll(selector).length;
+		return this;
 }
 
-export function $(selector) {
-	return new Dom(selector)
-}
+$.prototype.init.prototype = $.prototype;
+
+window.$ = $;
+
+export default $;
