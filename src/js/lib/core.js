@@ -18,15 +18,29 @@
 // })()
 
 
-const $ = function(selector) {
-	return new $.prototype.init(selector);
+const $ = function (selector) {
+		return new $.prototype.init(selector);
 }
-$.prototype.init = function(selector) {
+$.prototype.init = function (selector) {
 		if (!selector) {
 				return this; // {}
 		}
-		Object.assign(this, document.querySelectorAll(selector));
-		this.length = document.querySelectorAll(selector).length;
+		if (selector.tagName) {
+				this[0] = selector;
+				this.length = 1
+				return
+		}
+		let a = null
+		try {
+				a	 = document.querySelectorAll(selector);
+		} catch(e){}
+		a ?
+			Object.assign(this, (document.querySelectorAll(selector))) :
+			Object.assign(this, selector);
+
+		this.length = a ?document.querySelectorAll(selector).length :
+			selector.length
+// this.length = document.querySelectorAll(selector).length;
 		return this;
 }
 
@@ -35,3 +49,4 @@ $.prototype.init.prototype = $.prototype;
 window.$ = $;
 
 export default $;
+

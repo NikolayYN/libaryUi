@@ -18,7 +18,6 @@ $.prototype.hide = function() {
 				}
 				this[i].style.display = 'none';
 		}
-
 		return this;
 };
 
