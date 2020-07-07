@@ -22,10 +22,20 @@ $.prototype.eq = function (a = 0) {
 		return this
 }
 $.prototype.index = function () {
-	const parent = this[0].parentNode;
-	const children = [...parent.children];
-	function findMyIndex(elem) {
-		return elem === this[0]
-	}
-	return children.findIndex(findMyIndex.bind(this))
+		const parent = this[0].parentNode;
+		const children = [...parent.children];
+
+		function findMyIndex(elem) {
+				return elem === this[0]
+		}
+
+		return children.findIndex(findMyIndex.bind(this))
+}
+$.prototype.getElem = function (selector) {
+		return  Object.keys(this).find(i => {
+					console.log(this[i])
+					return 	this[i].classList.contains(selector);
+
+		})
+
 }
