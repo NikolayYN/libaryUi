@@ -1,8 +1,12 @@
 import './lib/lib';
 
+
 const div = document.querySelectorAll('div')
-$(div).setAttr('data', 'div');
+
+$('li').eq(2).addClass('active');
 $('li').on('click', function () {
-		$(this).addClass('active')
+		const a = $(this).index()
+		console.log(a);
+
 })
 
