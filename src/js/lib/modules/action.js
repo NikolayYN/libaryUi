@@ -32,10 +32,24 @@ $.prototype.index = function () {
 		return children.findIndex(findMyIndex.bind(this))
 }
 $.prototype.getElem = function (selector) {
-		return  Object.keys(this).find(i => {
-					console.log(this[i])
-					return 	this[i].classList.contains(selector);
+		const copyObj = Object.assign({}, this);
+		let changedItems = 0;
+		let count = 0;
+		for (let i = 0; i < copyObj.length; i++) {
+				const arr = copyObj[i].querySelectorAll(selector);
+				if (arr.length === 0) continue;
+				for (let j = 0; j < arr.length; j++) {
+						this[count] = arr[j]
+						count++;
+				}
+				changedItems += arr.length;
+		}
+	this.length = changedItems;
+		const length = Object.keys(this).length;
+		for (;changedItems < length; changedItems++ ) {
+				delete this[changedItems]
+		}
 
-		})
-
+		return this
 }
+

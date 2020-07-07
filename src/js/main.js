@@ -9,5 +9,5 @@ const div = document.querySelectorAll('div')
 // 		console.log(a);
 //
 // })
-let a = $('li').getElem('skope')
+let a = $(div).getElem('.skope')
 console.log(a);
