@@ -44,12 +44,48 @@ $.prototype.getElem = function (selector) {
 				}
 				changedItems += arr.length;
 		}
-	this.length = changedItems;
+		this.length = changedItems;
 		const length = Object.keys(this).length;
-		for (;changedItems < length; changedItems++ ) {
+		for (; changedItems < length; changedItems++) {
 				delete this[changedItems]
 		}
 
 		return this
 }
+$.prototype.closest = function (select) {
+		let counter = 0;
+		for (let i = 0; i < this.length; i++) {
+				let a = this[i];
+				this[i] = this[i].closest(select);
+				if (!this[i]) this[i] = a.parentNode;
+				counter++
+		}
+		const length = Object.keys(this).length;
+		for (; counter < length; counter++) {
+				delete this[counter]
+		}
 
+		return this
+}
+
+$.prototype.sibling = function () {
+		let changedItems = 0;
+		let counter = 0;
+		for (let i = 0; i < this.length; i++) {
+				const arr = this[i].parentNode.children;
+				for (let j = 0; j < arr.length; j++) {
+						if (arr[j] === this[i]) {
+								continue;
+						}
+						this[counter] = arr[j];
+						counter++
+				}
+				changedItems += arr.length - 1;
+		}
+		this.length = changedItems;
+		const length = Object.keys(this).length;
+		for (; changedItems < length; changedItems++) {
+				delete this[changedItems]
+		}
+		return this
+}

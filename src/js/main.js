@@ -1,7 +1,8 @@
 import './lib/lib';
 
 
-const div = document.querySelectorAll('div')
+const div = document.querySelectorAll('li')[0]
+console.log();
 
 // $('li').eq(2).addClass('active');
 // $('li').on('click', function () {
@@ -9,5 +10,5 @@ const div = document.querySelectorAll('div')
 // 		console.log(a);
 //
 // })
-let a = $(div).getElem('.skope')
+let a = $(div).sibling()
 console.log(a);
