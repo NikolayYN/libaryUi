@@ -46,20 +46,22 @@ $.prototype.fadeOut = function (dur, fin) {
 		}
 		return this
 }
-// function checkToggle(elem, ) {
-//
-// }
+
+function checkToggle(display) {
+		return display === 'none';
+}
+
 $.prototype.fadeToggle = function (dur, display = 'block', fin) {
 
 		for (let i = 0; i < this.length; i++) {
-				let displayStyle = window.getComputedStyle(this[i]).display
+				const check = checkToggle(window.getComputedStyle(this[i]).display)
 				const _toggle = (opacity) => {
-						if (displayStyle !== 'none'){
-							this[i].style.opacity = 1 - opacity;
-							if (this[i].style.opacity === '0') {
-									this[i].style.display = 'none';
-							}
-						}else {
+						if (!check) {
+								this[i].style.opacity = 1 - opacity;
+								if (this[i].style.opacity === '0') {
+										this[i].style.display = 'none';
+								}
+						} else {
 								this[i].style.display = display;
 								this[i].style.opacity = opacity
 						}
