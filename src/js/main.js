@@ -1,14 +1,14 @@
 import './lib/lib';
 
 
-const div = document.querySelectorAll('li')[0]
-console.log();
+$('#first').on('click', () => {
+		$('div').eq(1).fadeToggle(800);
+});
 
-// $('li').eq(2).addClass('active');
-// $('li').on('click', function () {
-// 		const a = $(this).index()
-// 		console.log(a);
-//
-// })
-let a = $(div).sibling()
-console.log(a);
+$('[data-count="second"]').on('click', () => {
+		$('div').eq(2).fadeToggle(800);
+});
+
+$('button').eq(2).on('click', () => {
+		$('.w-500').fadeToggle(800);
+});

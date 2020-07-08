@@ -73,6 +73,7 @@ $.prototype.sibling = function () {
 		let counter = 0;
 		for (let i = 0; i < this.length; i++) {
 				const arr = this[i].parentNode.children;
+				console.log(arr);
 				for (let j = 0; j < arr.length; j++) {
 						if (arr[j] === this[i]) {
 								continue;
